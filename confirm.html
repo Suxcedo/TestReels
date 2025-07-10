@@ -4,53 +4,90 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Email Confirmed - SUXCEDO Reels</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" />
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background: #121212;
-      color: white;
+      font-family: 'Poppins', sans-serif;
+      background: #f4f9fc;
+      color: #333;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      overflow: hidden;
     }
 
     .container {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 2.5rem 3rem;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
       text-align: center;
-      background: #1f1f1f;
-      padding: 2rem;
-      border-radius: 16px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      animation: fadeInUp 0.8s ease;
+      max-width: 400px;
+      width: 90%;
     }
 
-    h2 {
+    .container h2 {
       color: #4CAF50;
+      font-size: 1.9rem;
+      margin-bottom: 1rem;
     }
 
-    a button {
-      margin-top: 1rem;
-      padding: 0.75rem 2rem;
-      border: none;
+    .container p {
+      margin: 0.6rem 0;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .container img {
+      width: 100px;
+      margin-bottom: 1.5rem;
+    }
+
+    .container a button {
+      margin-top: 1.5rem;
+      padding: 0.75rem 2.2rem;
       background: #4CAF50;
+      border: none;
       color: white;
       font-size: 1rem;
-      border-radius: 8px;
+      border-radius: 12px;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: all 0.3s ease;
     }
 
-    a button:hover {
-      background: #45a049;
+    .container a button:hover {
+      background: #43a047;
+      transform: scale(1.03);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
+    <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="Confirmed Icon" />
     <h2>🎉 Email Confirmed!</h2>
-    <p>Your account has been successfully verified.</p>
-    <p>You can now log in to SUXCEDO Reels and start sharing your content!</p>
-    <a href="login.html"><button>Go to Login</button></a>
+    <p>Your SUXCEDO Reels account is now verified.</p>
+    <p>Welcome to the movement — go ahead and log in!</p>
+    <a href="login.html"><button>🚀 Go to Login</button></a>
   </div>
 </body>
 </html>
