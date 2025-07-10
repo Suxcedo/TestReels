@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel - SUXCEDO</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/@supabase/supabase-js" defer></script>
+  <script src="admin.js" defer></script>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Welcome, Admin 👑</h2>
+    <div id="admin-info">
+      <img id="admin-avatar" src="" alt="Admin Avatar" style="width: 100px; height: 100px; border-radius: 50%; display: none;" />
+      <p id="admin-username"></p>
+      <button onclick="logout()">Logout</button>
+    </div>
+    <hr />
+    <h3>Uploaded Posts (coming soon)</h3>
+    <div id="post-list">
+      <!-- We’ll display posts here soon -->
+    </div>
+  </div>
+</body>
+</html>

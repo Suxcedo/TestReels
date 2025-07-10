@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login - SUXCEDO Reels</title>
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/@supabase/supabase-js" defer></script>
+</head>
+<body>
+  <div class="form-container" id="login-box">
+    <h2>Login</h2>
+    <form id="login-form">
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <button type="submit">Log In</button>
+    </form>
+    <p style="text-align:center;">Don't have an account? <a href="signup.html">Sign Up</a></p>
+  </div>
+
+  <script type="module">
+    const supa = supabase.createClient(
+      'https://bojsjxlolzxwvueiuviv.supabase.co',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJvanNqeGxvbHp4d3Z1ZWl1dml2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE4ODM1NTQsImV4cCI6MjA2NzQ1OTU1NH0.kqdHP7uxhBaPUShoYODzeNKHbfj_u7b8rocQ-tvOsGg'
+    );
+
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const form = e.target;
+      const email = form.email.value.trim();
+      const password = form.password.value;
+
+      const { data, error } = await supa.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error) {
+        alert("Login failed: " + error.message);
+        return;
+      }
+
+      // Redirect after successful login
+      window.location.href = 'reels.html';
+    });
+  </script>
+</body>
+</html>

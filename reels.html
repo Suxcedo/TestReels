@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SUXCEDO Reels</title>
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background: #f0f0f0;
+      color: #333;
+      text-align: center;
+    }
+    #welcome {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  </style>
+  <script src="https://unpkg.com/@supabase/supabase-js"></script>
+</head>
+<body>
+  <h1>Welcome to SUXCEDO Reels</h1>
+  <div id="welcome">Loading...</div>
+  <button id="logout-btn">Logout</button>
+
+  <script>
+    // Initialize Supabase client
+    const supa = supabase.createClient(
+      'https://bojsjxlolzxwvueiuviv.supabase.co',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJvanNqeGxvbHp4d3Z1ZWl1dml2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE4ODM1NTQsImV4cCI6MjA2NzQ1OTU1NH0.kqdHP7uxhBaPUShoYODzeNKHbfj_u7b8rocQ-tvOsGg'
+    );
+
+    async function loadUser() {
+      const { data: { user }, error } = await supa.auth.getUser();
+      if (error || !user) {
+        // Not logged in, redirect to login page
+        window.location.href = 'login.html';
+        return;
+      }
+      
+      // Get username from profiles table
+      const { data: profile, error: profileError } = await supa
+        .from('profiles')
+        .select('username')
+        .eq('id', user.id)
+        .single();
+
+      if (profileError || !profile) {
+        document.getElementById('welcome').textContent = 'Welcome, user!';
+      } else {
+        document.getElementById('welcome').textContent = `Welcome, ${profile.username}!`;
+      }
+    }
+
+    document.getElementById('logout-btn').addEventListener('click', async () => {
+      await supa.auth.signOut();
+      window.location.href = 'login.html';
+    });
+
+    loadUser();
+  </script>
+</body>
+</html>
